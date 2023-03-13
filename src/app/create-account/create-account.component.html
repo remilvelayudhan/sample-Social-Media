@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="form-container">
+        <div class="title">Create Account</div>
+        <form [formGroup]="createAccountForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Enter you email</mat-label>
+                <input matInput formControlName="email" />
+
+                <mat-error *ngIf="createAccountForm.get('email')?.hasError('required')">email is madatory</mat-error>
+                <mat-error *ngIf="createAccountForm.get('email')?.hasError('email')"> incorrect email
+                    formate</mat-error>
+
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter you username</mat-label>
+                <input matInput formControlName="userName" />
+                <mat-error *ngIf="createAccountForm.get('userName')?.invalid"> </mat-error>
+                <mat-error *ngIf="createAccountForm.get('userName')?.hasError('required')">user name is madatory
+                </mat-error>
+                <mat-error *ngIf="createAccountForm.get('userName')?.hasError('maxlength')"> maximum 19 character
+                    allowed
+                </mat-error>
+
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter you password</mat-label>
+                <input type="password" matInput formControlName="password" />
+
+                <mat-error *ngIf="createAccountForm.get('password')?.invalid"> </mat-error>
+                <mat-error *ngIf="createAccountForm.get('password')?.hasError('required')">password is madatory
+                </mat-error>
+                <mat-error *ngIf="createAccountForm.get('password')?.hasError('minlength')"> minimum 6 character
+                </mat-error>
+
+
+
+            </mat-form-field>
+        </form>
+        <div class="buttons-container">
+            <button mat-raised-button class="login-button" (click)="createAccount()">
+                Create Account
+            </button>
+            <p>OR</p>
+            <button routerLink="/login" mat-button>Login</button>
+        </div>
+    </div>
+</div>
